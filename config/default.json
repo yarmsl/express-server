@@ -1,0 +1,6 @@
+{
+	"port": 5000,
+	"mongoUri": "mongodb+srv://yaroslav:mern42@merncluster.r6yow.mongodb.net/app?retryWrites=true&w=majority",
+	"jwtSecret": "yarmsl444444",
+	"frontUri" : "http://localhost:3000"
+}
