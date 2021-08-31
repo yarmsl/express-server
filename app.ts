@@ -21,7 +21,6 @@ const PORT = config.get('port') || 5000;
 const start = async() => {
 	try {
 		await mongoose.connect(config.get('mongoUri'), {
-			
 		});
 	} catch (e) {
 		console.warn('Server error ', e);

@@ -33,7 +33,6 @@ router.post(
 
 			res.status(201).json({ message: 'user created' });
 
-
 		} catch (e) {
 			res.status(500).json({ message: 'signup error' });
 		}
@@ -73,7 +72,7 @@ router.post(
 				{expiresIn: '1h'}
 			);
 
-			res.json({token, userId: user.id});
+			res.json({token, userId: user.id, name: user.name, avatar: user.avatar});
 
 		} catch (e) {
 			res.status(500).json({ message: 'signup error' });
