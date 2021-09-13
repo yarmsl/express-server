@@ -5,5 +5,12 @@ export interface UserInterface extends Document {
 	password: string;
 	name: string;
 	avatar: string;
-	posts?: string[];
+	posts?: PostInterface[];
+}
+
+export interface PostInterface extends Document {
+	author: string;
+	title: string;
+	text: string;
+	date: Date;
 }

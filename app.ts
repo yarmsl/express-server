@@ -1,7 +1,8 @@
 import express from 'express';
 import config from 'config';
 import mongoose from 'mongoose';
-import router from './routes/auth.routes';
+import authRoutes from './routes/auth.routes';
+import postsRoutes from './routes/posts.routes';
 import cors from 'cors';
 
 const app = express();
@@ -14,7 +15,8 @@ app.use(cors(corsOptions));
 // Configure Express to parse incoming JSON data
 app.use(express.json());
 
-app.use('/api/auth', router);
+app.use('/api/auth', authRoutes);
+app.use('/api/post', postsRoutes);
 
 const PORT = config.get('port') || 5000;
 

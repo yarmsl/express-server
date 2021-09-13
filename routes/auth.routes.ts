@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken';
 import { check, validationResult } from 'express-validator';
 import User from '../models/User';
 import config from 'config';
+
 const router = Router();
 
 router.post(
@@ -75,7 +76,7 @@ router.post(
 			res.json({token, userId: user.id, name: user.name, avatar: user.avatar});
 
 		} catch (e) {
-			res.status(500).json({ message: 'signup error' });
+			res.status(500).json({ message: 'signin error' });
 		}
 	});
 
