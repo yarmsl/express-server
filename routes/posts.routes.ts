@@ -21,6 +21,7 @@ router.post("/add", auth, async (req: Request, res: Response) => {
     res.status(201).json({ post });
   } catch (e) {
     res.status(500).json({ message: "publish error" });
+    return;
   }
 });
 
@@ -30,6 +31,7 @@ router.get("/", auth, async (req: Request, res: Response) => {
     res.json(posts);
   } catch (e) {
     res.status(500).json({ message: "get posts error" });
+    return;
   }
 });
 
@@ -39,6 +41,7 @@ router.get("/posts", auth, async (req: Request, res: Response) => {
     res.json(posts);
   } catch (e) {
     res.status(500).json({ message: "get posts error" });
+    return;
   }
 });
 
@@ -48,6 +51,7 @@ router.get("/:id", async (req: Request, res: Response) => {
     res.json(post);
   } catch (e) {
     res.status(500).json({ message: "get post error" });
+    return;
   }
 });
 

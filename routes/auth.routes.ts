@@ -17,15 +17,17 @@ router.post(
 		try {
 			const errors = validationResult(req);
 			if (!errors.isEmpty()) {
-				return res.status(400).json({
+				res.status(400).json({
 					errors: errors.array(),
 					message: 'invalid data'
 				});
+				return;
 			}
 			const { email, password } = req.body;
 			const candidate = await User.findOne({ email });
 			if (candidate) {
 				res.status(400).json({ message: 'user exists' });
+				return;
 			}
 			const hashedPassword = await bcrypt.hash(password, 12);
 
@@ -36,6 +38,7 @@ router.post(
 
 		} catch (e) {
 			res.status(500).json({ message: 'signup error' });
+			return;
 		}
 	});
 
@@ -49,22 +52,25 @@ router.post(
 		try {
 			const errors = validationResult(req);
 			if (!errors.isEmpty()) {
-				return res.status(400).json({
+				res.status(400).json({
 					errors: errors.array(),
 					message: 'invalid data'
 				});
+				return;
 			}
 			const { email, password } = req.body;
 
 			const user = await User.findOne({ email });
 			if (!user) {
-				return res.status(400).json({ message: 'user not found' });
+				res.status(400).json({ message: 'user not found' });
+				return;
 			}
 
 			const isMatch = await bcrypt.compare(password, user.password);
 
 			if (!isMatch) {
-				return res.status(400).json({ message: 'password is incorrect' });
+				res.status(400).json({ message: 'password is incorrect' });
+				return;
 			}
 
 			const token = jwt.sign(
@@ -77,6 +83,7 @@ router.post(
 
 		} catch (e) {
 			res.status(500).json({ message: 'signin error' });
+			return;
 		}
 	});
 

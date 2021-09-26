@@ -12,11 +12,11 @@ const authCheck = async (req: Request, res: Response, next: NextFunction): Promi
 			return res.status(401).json({ message: 'no auth' });
 		}
 		const decoded = jwt.decode(token, config.get('jwtSecret'));
-		console.log('userToken ', decoded);
 		req.body.user = decoded;
 		next();
 	} catch (e) {
 		res.status(401).json({ message: 'no auth' });
+		return;
 	}
 };
 
