@@ -18,7 +18,7 @@ router.post("/add", auth, async (req: Request, res: Response) => {
     )
       .populate("posts")
       .exec();
-    res.status(201).json({ post });
+    res.status(201).json(post);
   } catch (e) {
     res.status(500).json({ message: "publish error" });
     return;
