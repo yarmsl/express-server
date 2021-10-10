@@ -1,4 +1,4 @@
-name: Deplor ConsoleLogbook Server
+name: Deploy ConsoleLogbook Server
 
 on:
   push:
