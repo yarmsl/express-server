@@ -5,4 +5,4 @@ services:
     container_name: console-logbook-server-container
     restart: always
     ports:
-    - 80:5000
+    - 5000:5000
