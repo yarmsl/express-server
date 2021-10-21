@@ -8,7 +8,11 @@ import cors from "cors";
 const app = express();
 // Configure Express to get cross-origin requests
 const corsOptions = {
-  origin: config.get("frontUri") as string,
+  origin: [
+    config.get<string>("frontUriDev"),
+    config.get<string>("frontUriProd"),
+    config.get<string>("frontUriProdSSL"),
+  ],
   optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
