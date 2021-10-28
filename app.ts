@@ -10,6 +10,7 @@ const app = express();
 const corsOptions = {
   origin: [
     config.get<string>("frontUriDev"),
+    config.get<string>("frontUriIp"),
     config.get<string>("frontUriProd"),
     config.get<string>("frontUriProdSSL"),
   ],
