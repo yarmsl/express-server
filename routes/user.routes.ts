@@ -13,14 +13,15 @@ router.post(
     const avatar = req.file != null ? req.file.path : "";
     const name = req.body.name;
     const { userId } = req.body.user;
+    console.log(userId)
     try {
       if (name) {
         await User.findOneAndUpdate(
-          { id: userId },
+          { _id: userId },
           { avatar: avatar, name: name }
         );
       } else {
-        await User.findOneAndUpdate({ id: userId }, { avatar: avatar });
+        await User.findOneAndUpdate({ _id: userId }, { avatar: avatar });
       }
       res.status(200).json({ avatar: avatar, name: name });
     } catch (e) {
