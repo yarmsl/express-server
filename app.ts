@@ -3,10 +3,9 @@ import config from "config";
 import mongoose from "mongoose";
 import authRoutes from "./routes/auth.routes";
 import postsRoutes from "./routes/posts.routes";
+import userRoutes from "./routes/user.routes";
 import cors from "cors";
 
-const app = express();
-// Configure Express to get cross-origin requests
 const corsOptions = {
   origin: [
     config.get<string>("frontUriDev"),
@@ -16,12 +15,18 @@ const corsOptions = {
   ],
   optionsSuccessStatus: 200,
 };
+
+const app = express();
+
 app.use(cors(corsOptions));
-// Configure Express to parse incoming JSON data
+
 app.use(express.json());
+
+app.use("/uploads", express.static("uploads"));
 
 app.use("/api/auth", authRoutes);
 app.use("/api/post", postsRoutes);
+app.use("/api/user", userRoutes);
 
 const PORT = config.get("port") || 5000;
 
