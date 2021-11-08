@@ -92,7 +92,7 @@ router.post(
 router.get("/checkauth", authCheck, async (req: Request, res: Response) => {
   try {
     const userId = req.body.user.userId;
-    const user = await User.findOne({ id: userId });
+    const user = await User.findOne({ _id: userId });
     if (!user) {
       res.status(400).json({ message: "user not found" });
       return;
